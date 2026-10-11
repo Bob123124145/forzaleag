@@ -1,0 +1,34 @@
+{
+  "_readme": "Source of truth for the mashup. Change a sheet before changing code. null = unfilled/unverified cell; the preflight must list every null and every unresolved reference before a build. Never copy game files: reference them where they are via the companion folder token.",
+  "games": [
+    { "id": "host", "slug": "pc-forza-horizon-6", "role": "primary", "folderToken": "{game}", "launch": "kind game (store-detected) or exe {game}/<actual executable>", "modRoute": null, "engineAndLanguage": null, "verified": false },
+    { "id": "companion", "slug": "rocket-league", "role": "companion", "folderToken": "{game:rocket-league}", "launch": "never launched with a mod; content read from the player's own install", "modRoute": "none (Melty never mods its client; no account risk)", "engineAndLanguage": "unreal", "verified": false }
+  ],
+  "match": [
+    { "id": "match_default", "durationSeconds": 300, "kickoff": "ball drops at center, cars start at center circle", "players": 1, "aiCarsPerTeam": null, "overtime": null, "scoring": "1 point per goal", "resetAfterGoal": true, "endCondition": "timer reaches 0", "verified": false }
+  ],
+  "arena": [
+    { "id": "stadium_main", "source": "{game:rocket-league}", "sourceFiles": null, "loadMethod": null, "spawnPoint": "center circle", "goalBlue": null, "goalOrange": null, "boostPads": null, "verified": false }
+  ],
+  "ball": [
+    { "id": "ball_standard", "source": "{game:rocket-league}", "sourceFiles": null, "radius": null, "mass": null, "bounciness": null, "maxSpeed": null, "physicsEngine": null, "verified": false }
+  ],
+  "player_car": [
+    { "id": "player_forza_car", "source": "{game}", "choice": "player's current Forza car", "spawn": "stadium_main.spawnPoint", "boost": null, "jump": null, "verified": false }
+  ],
+  "ai_cars": [
+    { "id": "ai_team_blue", "source": "{game}", "carList": null, "count": null, "behavior": "chase ball, attempt shots, defend goal", "difficulty": null, "verified": false },
+    { "id": "ai_team_orange", "source": "{game}", "carList": null, "count": null, "behavior": "chase ball, attempt shots, defend goal", "difficulty": null, "verified": false }
+  ],
+  "hooks_into_host": [
+    { "id": "spawn_player_in_arena", "purpose": "place player car at center circle at start", "method": null, "verified": false },
+    { "id": "spawn_ball", "purpose": "create the ball with Rocket League's real model", "method": null, "verified": false },
+    { "id": "ball_physics", "purpose": "ball reacts to Forza car collisions", "method": null, "verified": false },
+    { "id": "goal_detection", "purpose": "detect ball inside a goal volume", "method": null, "verified": false },
+    { "id": "ai_driving", "purpose": "drive AI cars toward the ball", "method": null, "verified": false },
+    { "id": "hud_timer_score", "purpose": "show 5:00 timer and score", "method": null, "verified": false }
+  ],
+  "listing": [
+    { "title": "Forza League", "tagline": "Rocket League's stadium, played with your Forza Horizon 6 cars.", "description": "Spawn in your Forza car at the center circle of a Rocket League stadium, watch the ball drop and play a 5-minute solo match against AI cars. Needs both games installed; the arena and ball load from your own Rocket League copy.", "multiplayer": false, "credits": "TBD (name not yet given)", "license": "open remix", "remixAllowed": true, "requiredGames": ["pc-forza-horizon-6", "rocket-league"], "screenshot": null, "oneClickCheck": null, "testPassed": false }
+  ]
+}
